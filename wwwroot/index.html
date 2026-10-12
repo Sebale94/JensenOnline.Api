@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JensenOnline</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <h1>JensenOnline</h1>
+    <button id="logoutButton" style="display: none;">Logga ut</button>
+    <form id="loginForm">
+        <div>
+            <label for="email">E-post</label>
+            <input type="email" id="email" required>
+        </div>
+
+        <div>
+            <label for="password">Lösenord</label>
+            <input type="password" id="password" required>
+        </div>
+
+        <button type="submit">Logga in</button>
+    </form>
+
+    <p id="message"></p>
+
+    <section id="registerSection">
+        <h2>Skapa konto</h2>
+
+        <form id="registerForm">
+            <div>
+                <label for="registerEmail">E-post</label>
+                <input
+                    type="email"
+                    id="registerEmail"
+                    required>
+            </div>
+
+            <div>
+                <label for="registerPassword">Lösenord</label>
+                <input
+                    type="password"
+                    id="registerPassword"
+                    minlength="8"
+                    required>
+            </div>
+
+            <button type="submit">Registrera</button>
+        </form>
+
+        <p id="registerMessage"></p>
+    </section>
+
+    <p id="message"></p>
+
+    <section id="productsSection">
+    <h2>Produkter</h2>
+
+    <input
+        type="text"
+        id="searchProduct"
+        placeholder="Sök produkt">
+
+    <div id="productList"></div>
+    </section>
+
+     <section id="ordersSection" style="display: none;">
+        <h2>Mina orders</h2>
+
+        <button id="loadOrdersButton">Hämta mina orders</button>
+
+        <div id="orders"></div>
+    </section>
+
+    <section id="createOrderSection" style="display: none;">
+    <h2>Skapa order</h2>
+
+    <form id="createOrderForm">
+        <div>
+    <label for="productId">Produkt</label>
+
+    <select id="productId" required>
+        <option value="">Välj produkt</option>
+    </select>
+</div>
+
+        <div>
+            <label for="quantity">Antal</label>
+            <input type="number" id="quantity" min="1" required>
+        </div>
+
+        <button type="submit">Skapa order</button>
+    </form>
+
+    <p id="createOrderMessage"></p>
+</section>
+
+<section id="adminSection" style="display: none;">
+    <h2>Admin</h2>
+    <h3>Ändra produkt</h3>
+
+<form id="updateProductForm">
+    <div>
+        <label for="updateProductId">Produkt-ID</label>
+        <input
+            type="number"
+            id="updateProductId"
+            min="1"
+            required>
+    </div>
+
+    <div>
+        <label for="updateProductName">Namn</label>
+        <input
+            type="text"
+            id="updateProductName"
+            required>
+    </div>
+
+    <div>
+        <label for="updateProductPrice">Pris</label>
+        <input
+            type="number"
+            id="updateProductPrice"
+            min="0.01"
+            step="0.01"
+            required>
+    </div>
+
+    <div>
+        <label for="updateProductDescription">Beskrivning</label>
+        <textarea
+            id="updateProductDescription"
+            maxlength="500"
+            required>
+        </textarea>
+    </div>
+
+    <button type="submit">Ändra produkt</button>
+</form>
+
+<p id="updateProductMessage"></p>
+    <h3>Skapa produkt</h3>
+
+    <form id="createProductForm">
+        <div>
+            <label for="productName">Namn</label>
+            <input type="text" id="productName" required>
+        </div>
+
+        <div>
+            <label for="productPrice">Pris</label>
+            <input type="number" id="productPrice" min="0.01" step="0.01" required>
+        </div>
+
+        <div>
+            <label for="productDescription">Beskrivning</label>
+            <textarea id="productDescription" required></textarea>
+        </div>
+
+        <button type="submit">Skapa produkt</button>
+    </form>
+
+    <p id="createProductMessage"></p>
+
+    <h3>Alla orders</h3>
+
+    <button id="loadAllOrdersButton">Hämta alla orders</button>
+
+    <div id="allOrders"></div>
+</section>
+    <script src="./js/utils/utils.js"></script>
+    <script src="./js/auth.js"></script>
+    <script src="./js/products.js"></script>
+    <script src="./js/orders.js"></script>
+    <script src="./js/admin.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
