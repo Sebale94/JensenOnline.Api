@@ -96,6 +96,19 @@ namespace JensenOnline.Api.Controllers
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
+            var productIsUsed = await _context.OrderItems
+                .AnyAsync(oi => oi.ProductId == id);
+
+            if(productIsUsed)
+            {
+                return BadRequest(
+                    "Produkten kan inte tas bort eftersom den finns i en order"
+                );
+            }
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+
             return Ok(new
             {
                 message = "Produkten har tagits bort."
